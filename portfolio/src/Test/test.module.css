@@ -1,0 +1,124 @@
+@keyframes dissolveFromCenter {
+    0% {
+        clip-path: inset(0% 0% 0% 0%);
+    }
+
+    50% {
+        clip-path: inset(25% 25% 25% 25%);
+    }
+
+    100% {
+        clip-path: inset(50% 50% 50% 50%);
+    }
+}
+
+@keyframes resetSquare {
+    0% {
+        width: 60px;
+        height: 60px;
+        margin-left: -30px;
+        margin-top: -30px;
+        opacity: 0;
+    }
+
+    100% {
+        width: 20px;
+        height: 20px;
+        margin-left: -10px;
+        margin-top: -10px;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+
+.cursor_square {
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    position: fixed;
+    pointer-events: none;
+    will-change: transform;
+    z-index: 9999;
+    margin-left: -10px;
+    margin-top: -10px;
+    transition: width 150ms, height 150ms, margin 150ms;
+}
+
+.cursor_inner {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: all 150ms;
+}
+
+.cursor_animate {
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    animation: dissolveFromCenter 150ms forwards;
+}
+
+.cursor_animate .cursor_inner {
+    background-color: rgba(27, 197, 240, 0.514);
+}
+
+.cursor_animate_reset {
+    animation: resetSquare 100ms forwards;
+}
+
+
+
+
+/* .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.animated_text {
+    display: inline-block;
+    overflow: hidden;
+    font-size: 4rem;
+}
+
+
+
+.letter {
+    display: inline-block;
+    transition: transform 0.5s cubic-bezier(0.71, 0.06, 0.06, 0.93), opacity 0.5s;
+    transition-delay: calc(var(--index) * 0.05s);
+
+}
+
+.letter:hover {
+    transform: translateY(0);
+    opacity: 1;
+} */
+
+
+
+
+.stagger_container {
+    overflow: hidden;
+    border: 1px solid white;
+}
+
+.stagger {
+    margin: 0;
+    line-height: 0.8;
+    font-size: 1rem;
+}

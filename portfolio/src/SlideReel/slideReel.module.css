@@ -1,0 +1,42 @@
+:root{
+    --f-main: "Source Code Pro", monospace;
+    --f-secondary: "Space Grotesk", serif;
+  
+    font-family: var(--f-main);
+  
+  }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}   
+
+.counter {
+    transform: translatex(0);
+    animation: fadeIn 500ms ease-in-out;
+    font-family: var(--f-secondary);    
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.container {
+
+    display: flex;
+    align-items: center;  
+    gap: 20px;  
+    
+
+}
+
+.image_container{
+    overflow-y: hidden;
+    
+}
+
+
+
+

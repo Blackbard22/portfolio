@@ -1,0 +1,270 @@
+:root {
+    --f-main: "Source Code Pro", monospace;
+    --f-secondary: "Space Grotesk", serif;
+
+    font-family: var(--f-main);
+
+}
+
+@keyframes dissolveFromCenter {
+    0% {
+        clip-path: inset(0% 0% 0% 0%);
+    }
+
+    50% {
+        clip-path: inset(25% 25% 25% 25%);
+    }
+
+    100% {
+        clip-path: inset(50% 50% 50% 50%);
+    }
+}
+
+@keyframes resetSquare {
+    0% {
+        width: 60px;
+        height: 60px;
+        margin-left: -30px;
+        margin-top: -30px;
+        opacity: 0;
+    }
+
+    100% {
+        width: 20px;
+        height: 20px;
+        margin-left: -10px;
+        margin-top: -10px;
+        opacity: 1;
+    }
+}
+
+@keyframes fancyLoad {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes expandCenter {
+    0% {
+        opacity: 0;
+        clip-path: circle(0% at center);
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        clip-path: circle(150% at center);
+        transform: scale(1);
+    }
+}
+
+@keyframes height_appear {
+    from {
+        height: 0%;
+        opacity: 0;
+    }
+
+    to {
+        height: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes expandBottomToTop {
+    0% {
+        clip-path: inset(91% 0 0 0);
+        opacity: 0;
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+}
+
+@keyframes showBorders {
+    0% {
+        border-width: 0;
+        opacity: 0;
+    }
+
+    100% {
+        border-width: 2px;
+        opacity: 1;
+    }
+}
+
+
+.cursor_square {
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    position: fixed;
+    pointer-events: none;
+    will-change: transform;
+    z-index: 9999;
+    margin-left: -10px;
+    margin-top: -10px;
+    transition: width 150ms, height 150ms, margin 150ms;
+
+}
+
+.cursor_inner {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: all 150ms;
+}
+
+.cursor_animate {
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    animation: dissolveFromCenter 150ms forwards;
+}
+
+.cursor_animate .cursor_inner {
+    background-color: rgba(27, 197, 240, 0.514);
+}
+
+.cursor_animate_reset {
+    animation: resetSquare 100ms forwards;
+}
+
+
+
+
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.canvasContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+}
+
+
+
+.midCanvas {
+    position: fixed;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    height: 80vh;
+    width: 100vw;
+    z-index: 3;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 -4px 0px white;
+    background-color: black;
+
+
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    pointer-events: none;
+}
+
+
+.footer {
+    margin: 10px;
+    width: auto;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.subTitle {
+    margin-left: 30px;
+    font-family: var(--f-secondary);
+    font-weight: 100;
+}
+
+.project_list {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+}
+
+.project {
+    font-family: var(--f-secondary);
+    font-size: 4.5rem;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.project p {
+    color: white;
+    cursor: none;
+}
+
+.reel {
+    position: absolute;
+    right: 30px;
+    top: 25%;
+    display: flex;
+    width: 300px;
+    height: 300px;
+    z-index: 4;
+}
+
+.reel img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    animation: expandBottomToTop 200ms ease-in;
+    transform-origin: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.border {
+    position: absolute;
+    border: 2px solid white;
+    z-index: 4;
+    animation: showBorders 200ms ease-in;
+    padding: 5px;
+
+}
+
+
+
+@media (max-width: 800px) {
+    .cursor_square {
+        display: none;
+    }
+}
