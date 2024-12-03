@@ -1,4 +1,3 @@
-
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Link } from 'react-router-dom';
@@ -184,78 +183,7 @@ void main() {
     );
 };
 
-// const ShaderBackground = () => {
 
-
-//   const [position, setPosition] = useState({ x: 0, y: 0 });
-//   const [trailingPosition, setTrailingPosition] = useState({ x: 0, y: 0 });
-
-//   useEffect(() => {
-//     const cursor = document.querySelector('.cursor_dot');
-//     const cursorBorder = document.querySelector('.cursor_border');
-
-//     const onMouseMove = (e) => {
-//       // Update dot position immediately
-//       setPosition({ x: e.clientX, y: e.clientY });
-
-//       // Update border position with a slight delay
-//       setTimeout(() => {
-//         setTrailingPosition({ x: e.clientX, y: e.clientY });
-//       }, 0);
-//     };
-
-//     window.addEventListener('mousemove', onMouseMove);
-//     return () => window.removeEventListener('mousemove', onMouseMove);
-//   }, []);
-
-
-
-
-//   return (
-//     <div style={{
-//       position: 'fixed',
-//       top: 0,
-//       left: 0,
-//       width: '100%',
-//       height: '100%',
-//       margin: 0,
-//       padding: 0,
-//       overflow: 'hidden'
-//     }}>
-//       <Canvas
-//         style={{
-//           display: 'block',
-//           minWidth: '100%',
-//         }}
-//         camera={{ position: [0, 0, 1] }}
-//         gl={{ 
-//           antialias: true,
-//           alpha: false,
-//           preserveDrawingBuffer: false
-//         }}
-//       >
-//         <ShaderMaterial />
-//       </Canvas>
-//       <div
-//         className={styles.cursor_dot}
-//         style={{
-//           left: `${position.x}px`,
-//           top: `${position.y}px`
-//         }}
-//       />
-
-
-//       <div
-//         className={styles.cursor_border}
-//         style={{
-//           left: `${trailingPosition.x}px`,
-//           top: `${trailingPosition.y}px`
-//         }}
-//       />
-
-//     </div>
-//   );
-// };
 
 
 
@@ -371,13 +299,13 @@ const ShaderBackground = () => {
             // Combine vertical and horizontal intensities
             if (leftlink) {
                 const leftCombinedIntensity = (verticalIntensity + leftLinkHorizontalIntensity) / 2;
-                leftlink.style.setProperty('--gradient-opacity', leftCombinedIntensity.toFixed(2));
+                leftlink.style.setProperty('--gradient-opacity', Math.min(leftCombinedIntensity.toFixed(2), 0.6));
                 leftlink.style.setProperty('--blur', `${(leftCombinedIntensity * 6).toFixed(2)}px`);
             }
 
             if (rightLink) {
                 const rightCombinedIntensity = (verticalIntensity + rightLinkHorizontalIntensity) / 2;
-                rightLink.style.setProperty('--gradient-opacity', rightCombinedIntensity.toFixed(2));
+                rightLink.style.setProperty('--gradient-opacity', Math.min(rightCombinedIntensity.toFixed(2), 0.6));
                 rightLink.style.setProperty('--blur', `${(rightCombinedIntensity * 6).toFixed(2)}px`);
             }
         };
@@ -422,9 +350,23 @@ const ShaderBackground = () => {
     };
 
 
-
-
-
+    useEffect(() => {
+        
+        const isMobile = window.innerWidth <= 800;
+        
+        if (isMobile) {
+            const project = document.querySelector(`.${styles.projects_link}`);
+            const about = document.querySelector(`.${styles.about_link}`);
+            
+            if (project) {
+                project.classList.add(styles.animate);
+            }
+            if (about) {
+                about.classList.add(styles.animate);
+            }
+        }
+    }, []);
+    
 
 
     return (
@@ -443,6 +385,7 @@ const ShaderBackground = () => {
                 style={{
                     display: 'block',
                     minWidth: '100%',
+                    zIndex: -2
                 }}
                 camera={{ position: [0, 0, 1] }}
                 gl={{
@@ -477,7 +420,7 @@ const ShaderBackground = () => {
                             <rect className={styles.square} x="10" y="60" width="20" height="20" />
 
                             <rect className={styles.square} x="60" y="60" width="20" height="20" />
-                            {/* <rect className={styles.mid_square} x="35" y="35" width="20" height="20" /> */}
+                            
 
                         </svg>
                     </div>

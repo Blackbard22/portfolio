@@ -12,9 +12,7 @@ import gsap from "gsap";
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { CSSRulePlugin } from "gsap/CSSRulePlugin";
-// import image1 from '../../public/ss_1.png';
-// import image2 from '../../public/ss_2.png';
-// import image3 from '../../public/ss_3.png';
+
 
 
 import image2 from '../../public/exec-dash.png'
@@ -461,6 +459,12 @@ const ProjectView = () => {
             </div>
 
             <div className={styles.overlay} />
+
+
+            <section class={styles.scroll}>
+                <a><span></span></a>
+            </section>
+
 
 
             <div

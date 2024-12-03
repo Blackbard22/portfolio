@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './SlideReel.module.css';
+import styles from './slideReel.module.css';
 // import pic1 from '../../public/architecture.jpg';
 // import pic2 from '../../public/obscure.jpg'
 import pic1 from '../../public/maze1.png'

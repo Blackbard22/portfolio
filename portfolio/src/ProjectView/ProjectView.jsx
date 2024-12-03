@@ -204,8 +204,7 @@ const ProjectView = () => {
         const layout = document.querySelector(`.${styles.proj_info}`);
         layout.classList.toggle(styles.row);
 
-        // let splitText = new SplitText(`.${styles.title_top}`, { type: 'chars' });
-        // let chars = splitText.chars;
+    
 
         const afterRule = CSSRulePlugin.getRule(`.${styles.proj_info}::after`);
         const beforeRule = CSSRulePlugin.getRule(`.${styles.proj_info}::before`);
@@ -232,6 +231,14 @@ const ProjectView = () => {
             .to(beforeRule, {
                 width: '50%',
             }, '<')
+            .fromTo(
+                `.${styles.scroll}`,
+                { opacity: 1 },
+                {
+                    opacity: 0,
+                    display: 0
+                }, '<'
+            )
             .fromTo(
                 `.${styles.proj_info}`,
                 { opacity: 1 },
@@ -333,6 +340,8 @@ const ProjectView = () => {
 
     });
 
+
+    
 
 
 
@@ -462,6 +471,16 @@ const ProjectView = () => {
             </div>
 
             <div className={styles.overlay} />
+
+
+
+
+        <section class={styles.scroll}>
+            <a ><span></span></a>
+        </section>
+
+            
+
 
 
             <div

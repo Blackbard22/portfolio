@@ -50,6 +50,8 @@
 }
 
 
+
+
 .cursor_square {
     width: 20px;
     height: 20px;
@@ -119,9 +121,6 @@
     z-index: 8;
     perspective: 10px;
     align-items: center;
-    margin-top: 10px;
-
-
 }
 
 
@@ -648,3 +647,110 @@
 
 
 }
+
+
+
+.scroll_icon_container {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    animation: blink 1.5s infinite;
+    z-index: 10;
+}
+
+.scroll_icon {
+    width: 3rem;
+    height: 3rem;
+    color: #4a5568;
+    stroke-width: 1.5;
+    animation: bounce 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { 
+        opacity: 1; 
+    }
+    50% { 
+        opacity: 0; 
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+}
+
+
+
+.chevron {
+    position: absolute;
+    bottom: 30px;
+    display:block;
+    height:50px; /*Height should be double border thickness*/
+}
+.chevron::before,
+.chevron::after {
+    position:absolute;
+    display:block;
+    content:"";
+    border:25px solid transparent; /*Adjust chevron size*/
+}
+/*Change the four instances of 'top' below to rotate chevron*/
+/*Use (top/right/bottom/left) where you want the back of the chevron to be*/
+.chevron::before {
+    top:0;
+    border-top-color:rgb(0, 187, 78); /*Chevron Color*/
+}
+.chevron::after {
+    top:-10px; /*Adjust thickness*/
+    border-top-color:#fff; 
+}
+
+
+
+
+.scroll {
+    position: fixed;
+    bottom: 80px;
+    z-index: 2
+}
+
+.scroll a {
+    padding-top: 70px;
+  }
+  .scroll a span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    transform: rotate(-45deg);
+    animation: blink_cursor 3s linear forwards;
+    animation-iteration-count: infinite
+  }
+
+  @keyframes blink_cursor {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+
+  }
+
+
+  
+

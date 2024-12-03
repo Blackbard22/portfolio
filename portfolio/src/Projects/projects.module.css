@@ -175,7 +175,10 @@
     left: 50%;
     transform: translateX(-50%);
     box-shadow: 0 -4px 0px white;
-    background-color: black;
+    background-color: #1a1919;
+    color: #9a9998;
+    /* color: blue; */
+
 
 
 }
@@ -225,7 +228,7 @@
 }
 
 .project p {
-    color: white;
+    color: #d4d4d4;
     cursor: none;
 }
 
@@ -266,5 +269,12 @@
 @media (max-width: 800px) {
     .cursor_square {
         display: none;
+    }
+
+
+    .project{
+        padding: 10px;
+        background-color: #5a59594d;
+        border-radius: 20px;
     }
 }
